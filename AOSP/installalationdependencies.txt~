@@ -64,8 +64,8 @@ To make these errors go away, you have two choices:
 ******************************
 make: *** [out/target/common/obj/PACKAGING/checkapi-current-timestamp] Error 38
 
-1. copy public.txt from path PROJECT_HOME/out/target/common/obj/PACKAGING/
-2 past it in to PROJECT_HOME/frameworks/base/api/  
+1. copy public.txt from path /android10045451/out/target/common/obj/PACKAGING/
+2 past it in to /home/manoj/android10045451/frameworks/base/api/  
 3 rename it with name current.txt and delete the old one
 4 done
 ..............................................................................................................................
@@ -80,13 +80,13 @@ How to Build ICU ?
 
 1 . create an empty folder "icuBuild"  at path "/android10045451/external/icu4c/"
 2 . Goto path cd android10045451/external/icu4c/icuBuild/
-3 . run this command   $:PROJECT_HOME/external/icu4c/icuBuild/ ../runConfigureICU Linux
+3 . run this command   $:android10045451/external/icu4c/icuBuild/ ../runConfigureICU Linux
 4 . make -j2
-5 . Copy the file "icudt46l.dat" from path PROJECT_HOME/external/icu4c/icuBuild/data/out/tmp/
-6 . paste the file in to folder  PROJECT_HOME/external/icu4c/stubdata/ and rename this file with name icudt46l-all.dat
+5 . Copy the file "icudt46l.dat" from path /home/manoj/android10045451/external/icu4c/icuBuild/data/out/tmp/
+6 . paste the file in to folder  /home/manoj/android10045451/external/icu4c/stubdata/ and rename this file with name icudt46l-all.dat
 
 For adding custum language to icu build eg . gujrati(gu)
-1. open the file PROJECT_HOME/external/icu4c/stubdata/icudt46l-default.txt
+1. open the file /home/manoj/android10045451/external/icu4c/stubdata/icudt46l-default.txt
 2. search hi.
 3. where ever you find hi.res and hi_IN.res add your language code i.e gu.res and gu_IN.res    
 	this changes to be done at coll,cur,lang,region,zone and finally at end just follow hi code ie hindi.
