@@ -1,0 +1,110 @@
+git clone https://github.com/android/platform_external_openssl.git
+............................................................
+install java 1.6.0  and set java_HOME PATH
+.................................................................................
+sudo apt-get install bison
+...................................................................................
+sudo apt-get install git-core gnupg flex bison gperf dpkg-dev gcc-multilib build-essential   zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev   libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-glx:i386   libgl1-mesa-dev g++-multilib mingw32 openjdk-6-jdk tofrodos   python-markdown libxml2-utils xsltproc zlib1g-dev:i386
+
+....................................................................................................
+sudo apt-get install flex
+...............................................................................................................
+sudo aptitude install flex
+................................................................................................................
+#Can't install required packages for Ubuntu to build Android Open Source Project
+
+sudo apt-get install git-core gnupg flex bison gperf build-essential \
+zip curl zlib1g-dev libc6-dev lib64ncurses5-dev \ x11proto-core-dev
+libx11-dev lib64readline5-dev lib64z-dev \ libgl1-mesa-dev
+g++-multilib tofrodos
+......................................................................................................................
+
+//Crunch.o error1 
+1、首先安装gcc4.4和g++4.4
+sudo apt-get install gcc-4.4
+sudo apt-get install g++-4.4
+2、gcc和g++的降级
+gcc降级：
+  sudo rm -rf /usr/bin/gcc
+  sudo ln -s /usr/bin/gcc-4.4 /usr/bin/gcc
+  gcc -v
+
+g++降级
+   sudo rm -rf /usr/bin/g++
+  sudo ln -s /usr/bin/g++-4.4 /usr/bin/g++
+   g++ -v 
+.........................................................................................................................
+sudo apt-get -y install libx11-dev
+.........................................................................................................................
+sudo apt-get install --reinstall binutils  
+sudo apt-get install --reinstall build-essential  
+sudo apt-get install --reinstall libc6-dev  
+sudo apt-get install --reinstall gcc-4.7-multilib   
+sudo apt-get install --reinstall g++-4.7-multilib 
+.........................................................................................................................
+G++: selected multilib '32' not installed.
+
+sudo apt-get install g++-4.4-multilib
+.........................................................................................
+
+make: *** [out/target/common/obj/JAVA_LIBRARIES/framework_intermediates/classes-full-debug.jar] Error 41
+
+due to something missing in to framework...just remove the framework and replace with original framework and worked
+........................................................................................................
+
+******************************
+You have tried to change the API from what has been previously approved.
+
+To make these errors go away, you have two choices:
+   1) You can add "@hide" javadoc comments to the methods, etc. listed in the
+      errors above.
+
+   2) You can update current.txt by executing the following command:
+         make update-api
+
+      To submit the revised current.txt to the main Android repository,
+      you will need approval.
+******************************
+make: *** [out/target/common/obj/PACKAGING/checkapi-current-timestamp] Error 38
+
+1. copy public.txt from path PROJECT_HOME/out/target/common/obj/PACKAGING/
+2 past it in to PROJECT_HOME/frameworks/base/api/  
+3 rename it with name current.txt and delete the old one
+4 done
+..............................................................................................................................
+How to add font file ?
+1. Push new font.ttf  at path /system/fonts/
+2. pull fallback_fonts.xml and system_fonts.xml from path /system/etc/
+3. add the name of your font in fallback_fonts.xml and system_fonts.xml  and push this two file at /system/etc path.
+4. restart your device done.
+
+...............................................................................................................................
+How to Build ICU ?
+
+1 . create an empty folder "icuBuild"  at path "/android10045451/external/icu4c/"
+2 . Goto path cd android10045451/external/icu4c/icuBuild/
+3 . run this command   $:PROJECT_HOME/external/icu4c/icuBuild/ ../runConfigureICU Linux
+4 . make -j2
+5 . Copy the file "icudt46l.dat" from path PROJECT_HOME/external/icu4c/icuBuild/data/out/tmp/
+6 . paste the file in to folder  PROJECT_HOME/external/icu4c/stubdata/ and rename this file with name icudt46l-all.dat
+
+For adding custum language to icu build eg . gujrati(gu)
+1. open the file PROJECT_HOME/external/icu4c/stubdata/icudt46l-default.txt
+2. search hi.
+3. where ever you find hi.res and hi_IN.res add your language code i.e gu.res and gu_IN.res    
+	this changes to be done at coll,cur,lang,region,zone and finally at end just follow hi code ie hindi.
+ 
+...................................................................................................
+add custom country language
+
+1. got to path PROJECT_HOME/device/qcom/common/  
+2. changes in common.mk           ifeq ($(TARGET_LANGUAGE_SELECT),MyEng)
+		                     PRODUCT_LOCALES := en_US gu_IN
+
+3. add gu_IN languages_full.mk , languages_small.mk , locales_full.mk
+
+...................................................................................................
+How to add third party app in builds?
+....................................................................................................
+How to add values-gu ,drawable gu in framework ?
+....................................................................................................
